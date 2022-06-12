@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100px;
+  background: #545e75;
+  box-shadow: 0px 5px 5px #b6b6b6;
+}
+
+.site-header .site-branding {
+  position: absolute;
+  left: 0;
+  background: #fff;
+  padding-left: 30px;
+}
+
+.site-header .site-branding img {
+  width: 240px;
+  height: 100px;
+}
+
+.site-header .main-navigation .menu ul {
+  position: relative;
+  height: 100px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.site-header .main-navigation .menu ul li a {
+  font-size: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.site-header .main-navigation .menu ul li + li {
+  margin-left: 30px;
+}
+
+.site-main {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+}
+
+.site-main .site-main-heroview {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #f5f5f5;
+  padding: 30px 0;
+}
+
+.site-main .site-main-heroview .heroview-img {
+  position: relative;
+  width: 1228px;
+  height: 600px;
+  margin: auto;
+}
+
+.site-main .site-main-heroview .heroview-img img {
+  width: 1228px;
+  height: 600px;
+}
+
+.site-main .site-main-heroview .heroview-scroll {
+  position: absolute;
+  left: 10px;
+  bottom: 30px;
+}
+
+.site-main-news {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: red;
+}

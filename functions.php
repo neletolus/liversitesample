@@ -1,67 +1,26 @@
 <?php
-/**
- * Twenty Twenty-Two functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage Twenty_Twenty_Two
- * @since Twenty Twenty-Two 1.0
- */
+add_theme_support('post-thumbnails');
 
+add_action('after_setup_theme', 'register_menu');
+function register_menu()
+{
+  register_nav_menu('primary', __('Primary Menu', 'theme-slug'));
+}
 
-if ( ! function_exists( 'twentytwentytwo_support' ) ) :
+add_theme_support('custom-logo');
 
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * @since Twenty Twenty-Two 1.0
-	 *
-	 * @return void
-	 */
-	function twentytwentytwo_support() {
-
-		// Add support for block styles.
-		add_theme_support( 'wp-block-styles' );
-
-		// Enqueue editor styles.
-		add_editor_style( 'style.css' );
-
-	}
-
-endif;
-
-add_action( 'after_setup_theme', 'twentytwentytwo_support' );
-
-if ( ! function_exists( 'twentytwentytwo_styles' ) ) :
-
-	/**
-	 * Enqueue styles.
-	 *
-	 * @since Twenty Twenty-Two 1.0
-	 *
-	 * @return void
-	 */
-	function twentytwentytwo_styles() {
-		// Register theme stylesheet.
-		$theme_version = wp_get_theme()->get( 'Version' );
-
-		$version_string = is_string( $theme_version ) ? $theme_version : false;
-		wp_register_style(
-			'twentytwentytwo-style',
-			get_template_directory_uri() . '/style.css',
-			array(),
-			$version_string
-		);
-
-		// Enqueue theme stylesheet.
-		wp_enqueue_style( 'twentytwentytwo-style' );
-
-	}
-
-endif;
-
-add_action( 'wp_enqueue_scripts', 'twentytwentytwo_styles' );
-
-// Add block patterns
-require get_template_directory() . '/inc/block-patterns.php';
+add_action('init', 'create_post_type');
+function create_post_type()
+{
+  register_post_type('news', [ // 投稿タイプ名の定義
+    'labels' => [
+      'name'          => 'ニュース', // 管理画面上で表示する投稿タイプ名
+      'singular_name' => 'news',    // カスタム投稿の識別名
+    ],
+    'public'        => true,  // 投稿タイプをpublicにするか
+    'has_archive'   => false, // アーカイブ機能ON/OFF
+    'menu_position' => 5,     // 管理画面上での配置場所
+    'show_in_rest'  => true,  // 5系から出てきた新エディタ「Gutenberg」を有効にする
+    'supports' => array('title', 'editor', 'thumbnail')
+  ]);
+}
